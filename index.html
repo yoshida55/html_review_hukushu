@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>作業 アストモスグループ物流会社 採用サイト</title>
+    <title>作業 練習用バラのサイト 採用サイト</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/work.css" />
@@ -12,196 +12,52 @@
   </head>
   <body>
     <!-- ===============================================
-     ヘッダー
+     ヘッダー（ハンバーガーメニュー）
+     クリックすると画面上部にメニューが表示される
      =============================================== -->
+    <!-- フレックスボックスを使用して、３列の画像を登録する -->
     <header class="header_area">
-      <div class="header_logo">
-        <a href="#"><img src="img/logo_bk.png" alt="ASUTOMO GROUP" /></a>
-      </div>
-      <nav class="header_nav">
-        <a class="header_nav_item" href="#">
-          <span class="header_text" data-text="会社を知る">会社を知る</span>
-        </a>
-        <a class="header_nav_item" href="#">
-          <span class="header_text" data-text="人を知る">人を知る</span>
-        </a>
-        <a class="header_nav_item" href="#">
-          <span class="header_text" data-text="働く環境を知る">働く環境を知る</span>
-        </a>
-        <a class="header_nav_item" href="#">
-          <span class="header_text" data-text="採用情報">採用情報</span>
-        </a>
-      </nav>
-
-      <div class="header_buttons">
-        <a class="header_button color1" href="#">募集要項</a>
-        <a class="header_button color2" href="#">エントリー</a>
-      </div>
-    </header>
-
-    <!-- ===============================================
-     メインビジュアル
-     =============================================== -->
-    <!-- メインビジュアル全体（背景+テキストを重ねる） -->
-    <section class="mainvisual_area">
-      <!-- スライド背景コンテナ -->
-      <div class="mainvisual_bg">
-        <!-- スライド背景1枚（アニメーション切替用） -->
-        <div class="mainvisual_slide mainvisual_slide1"></div>
-        <div class="mainvisual_slide mainvisual_slide2"></div>
-        <div class="mainvisual_slide mainvisual_slide3"></div>
-      </div>
-      <!-- テキストコンテナ -->
-      <div class="mainvisual_content">
-        <img class="mainvisual_title" src="img/copy_bl.svg" alt="ASUTOMO GROUP" />
-        <p class="mainvisual_sub_title title_position1">明日を灯す。</p>
-        <p class="mainvisual_sub_title title_position2">その情熱を燃やせ。</p>
-      </div>
-
-      <!-- タイトル上に動画を配置（PCのみ表示） -->
-      <video class="mainvisual_video" autoplay muted loop playsinline>
-        <source src="img/move/アストモスグループ物流会社 採用サイト.mp4" type="video/mp4" />
-      </video>
-    </section>
-
-    <!-- ===============================================➂
-     メッセージ
-     =============================================== -->
-    <section class="message_area">
-      <!-- 背景とメッセージ -->
-      <div class="message_content_wrapper">
-        <!-- ブルーのグラデーションを指定 -->
-        <div class="message_background">
-          <div class="message_content">
-            <p class="message_text">人々の明日を支える使命感</p>
-            <p class="message_text">積み上げてきた確かな信頼</p>
-            <p class="message_text">それに燃ける情熱が、明日を灯す。</p>
-            <img class="message_catchcopy" src="img/top/message_txt_01.png" alt="ただの運ぶを超えていけ。届けるは明日を灯すエネルギー。" />
-          </div>
-        </div>
-      </div>
-      <!-- 白い半円形の帯 -->
-      <div class="message_white_circle"></div>
-
-      <!-- 写真コンテナ（sectionに重なる） -->
-      <div class="message_photos">
-        <img class="message_photo_img photo1" src="img/top/message_img_01.jpg" alt="社員のイメージ" />
-        <img class="message_photo_img photo2" src="img/top/message_img_02.jpg" alt="社員のイメージ" />
-        <img class="message_photo_img photo3" src="img/top/message_img_03.jpg" alt="社員のイメージ" />
-        <img class="message_photo_img photo4" src="img/top/message_img_04.jpg" alt="社員のイメージ" />
-        <img class="message_photo_img photo5" src="img/top/message_img_05.jpg" alt="社員のイメージ" />
-      </div>
-    </section>
-
-    <!-- ===============================================
-     会社を知る
-     =============================================== -->
-    <section class="company_area">
-      <h2 class="company_title">Company<span class="company_sub_title">会社を知る</span></h2>
-      <p class="company_msg">明日を灯す。未来を届ける。</p>
-
-      <!-- フレックスで画像を左右に配置する  display: flex; 画像２左右に２列-->
-      <div class="summary_area">
-        <div class="summary_container">
-          <img class="summary_logo" src="/img/btn_about_txt.png" alt="" />
-
-          <!-- 文字のあとに〇で囲んだ→矢印 -->
-          <a href="#" class="view_more_btn">
-            <span class="view_more_text" data-text="View More"></span>
-            <span class="arrow_icon">→</span>
-          </a>
-        </div>
-
-        <div class="summary_container">
-          <img class="summary_logo1" src="/img/btn_about_img.png" alt="" />
-        </div>
-        <img class="summary_under_logo" src="/img/btn_about_us_img.jpg" alt="" />
-        <img class="summary_under_logo" src="/img/btn_reasons_img.jpg" alt="" />
-      </div>
-      <!-- /.summary_area -->
-    </section>
-
-    <!-- ===============================================
-     事業紹介
-     =============================================== -->
-
-    <section class="business_area">
-      <img class="car_img" src="img/btn_business_img.jpg" alt="" />
-      <div class="message_content">
-        <h2 class="message_main_text">事業を知る</h2>
-        <p class="message_text">積み上げてきた確かな信頼</p>
-        <p class="message_text">それに燃ける情熱が、明日を灯す。</p>
-        <img class="message_catchcopy" src="img/btn_business_txt.png" alt="ただの運ぶを超えていけ。届けるは明日を灯すエネルギー。" />
-      </div>
-      <!-- 白い半円形の帯 -->
-      <div class="business_white_circle"></div>
-    </section>
-
-    <!-- ===============================================
-     人を知る
-     =============================================== -->
-    <section class="human_area">
-      <h2 class="company_title">Member<span class="company_sub_title">人を知る</span></h2>
-      <p class="company_msg">人を、街を、灯せ。</p>
-      <!-- ディスプレイフレックスで４枚の画像を並べるとともに、⇒矢印でスライダーを実装する。 -->
-      <div>
-        <div class="slider">
-          <div class="slider_item"><img src="img/interview/interview_thumb_01.png" alt="社員のイメージ" /></div>
-          <div class="slider_item"><img src="img/interview/interview_thumb_02.png" alt="社員のイメージ" /></div>
-          <div class="slider_item"><img src="img/interview/interview_thumb_03.png" alt="社員のイメージ" /></div>
-          <div class="slider_item"><img src="img/interview/interview_thumb_04.png" alt="社員のイメージ" /></div>
-        </div>
-      </div>
-      <!-- 文字のあとに〇で囲んだ→矢印 -->
-      <button type="button" class="human_view_btn">
-        <span class="view_more_text" data-text="View More"></span>
-        <span class="arrow_icon">→</span>
+      <!-- ハンバーガーメニュー -->
+      <button class="hamburger_menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
-    </section>
 
-    <!-- ===============================================
-     Culture
-     =============================================== -->
-    <section class="culture_area">
-      <h2 class="company_title">Culture<span class="culture_sub_title">働く環境を知る</span></h2>
-      <p class="company_msg">完全燃焼できる環境がここにある。</p>
-
-      <div class="culture_list">
-        <img class="culture_item" src="img/btn_career_img.jpg" alt="会議" />
-        <img class="culture_item" src="img/btn_career_img.jpg" alt="会議" />
+      <!-- 左上のロゴ -->
+      <div>
+        <a class="main_logo">Rose Company</a>
       </div>
-    </section>
+
+      <!-- ハンバーガメニュー押下時のメニュー表示部分 -->
+      <!-- position: fixed; z-index 450 -->
+      <!-- <div>
+        <<!-->
+      <!-- 画面中央に配置 フレックスで縦に並べる -->
+      <!-- <nav class="global_menu">
+          <a href="#" class="global_menu_link">トップ</a>
+          <a href="#" class="global_menu_link">会社概要</a>
+          <a href="#" class="global_menu_link">採用情報</a>
+          <a href="#" class="global_menu_link">お問い合わせ</a>
+        </nav>
+      </div>  -->
+    </header>
     <!-- ===============================================
-     Join us! 採用情報
+     mainvisual(３本の花の画像が表示される)
      =============================================== -->
-    <section class="recruit_area">
-      <h2 class="company_title">join us<span class="company_sub_title">採用情報</span></h2>
-      <p class="company_msg">私たちとともに<br />“明日を灯す”仲間を募集しています。</p>
-
-      <!-- 募集要項とエントリーフォームボタン -->
-
-      <div class="recruit_buttons">
-        <div class="recruit_list recruit_color1">
-          <a class="recruit_button" href="#">募集要項</a>
-          <a class="recruit_arrow" href="#">→</a>
-        </div>
-        <div class="recruit_list recruit_color2">
-          <a class="recruit_button" href="#">エントリーフォーム</a>
-          <a class="recruit_arrow" href="#">→</a>
-        </div>
-      </div>
+    <section class="main_area">
+      <img class="main_logo_img" src="img/mainvisual1.jpg" alt="花１" />
+      <img class="main_logo_img" src="img/mainvisual2.jpg" alt="花２" />
+      <img class="main_logo_img" src="img/mainvisual3.jpg" alt="花３" />
     </section>
-    <!-- ===============================================
-     フッター
+
+        <!-- ===============================================
+     
      =============================================== -->
-
-    <footer></footer>
-
-    <!-- jQuery読み込み（CDN） -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- slick JavaScript -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <section class="imformation_area">
+      <h2 class="section_title">Information</h2>
+      <p class="section_subtitle">最新情報</p>
+    </section>
 
     <script src="js/work.js"></script>
   </body>

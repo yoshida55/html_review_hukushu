@@ -3,822 +3,112 @@
    └─────────────────────────────────────────┘ */
 
 :root {
-  --side-width: 10rem; /* 両サイドの幅 */
-  --section-height: 25rem; /* セクションの高さ */
-  --contents-width: 14.4rem; /* コンテンツの最大幅 */
-  --header-height: 7rem; /* ヘッダーの高さ */
-}
-
-body {
-  background-color: white;
+  width: 144rem;
+  margin: 0 auto;
 }
 
 /* ┌─────────────────────────────────────────┐
-   │ ヘッダー                                │
-   │ - 上に固定                              │
-   │ - ロゴとナビを横並び                    │
-   │ - 右端に「募集要項」「エントリー」ボタ
-   ン│
+   │ headerハンバーガメニュー& 押下時のメニュー画面 z-index 500                      │
    └─────────────────────────────────────────┘ */
-.header_area {
+
+/* ハンバーガーメニュー */
+.hamburger_menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--header-height);
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* ロゴとナビを両端に配置 */
-  padding: 0 2rem; /* 左右の余白 */
-  z-index: 1000; /* ヘッダーを最前面に表示 */
-}
-
-.header_area.visible {
-  background-color: black; /* スクロールしたら背景を黒に */
-  transition: background-color 0.3s ease; /* 背景色の変化をスムーズに */
-}
-
-.header_logo {
-  width: 25rem;
-  height: auto;
-  margin-left: 2rem;
-}
-.header_nav {
-  display: flex;
-  gap: 2rem; /* ナビゲーションの間隔 */
-  margin-right: 25rem;
-}
-
-.header_nav_item {
-  font-size: 1.3rem;
-  color: white;
-  text-decoration: none;
-
-  overflow: hidden; /* アニメーションのため、はみ出す部分を隠す */
-}
-
-.header_text {
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.header_text::after {
-  content: attr(data-text);
-  position: absolute;
-  transform: translateY(100%);
-  left: 0;
-  color: white;
-}
-
-.header_text:hover {
-  transform: translateY(-100%);
-}
-
-.header_buttons {
-  display: flex;
-  gap: 1rem; /* ボタンの間隔 */
-}
-
-.header_button {
-  width: 11rem;
-  height: 4rem;
-  font-size: 1.3em;
-  border-radius: 4rem;
-  text-decoration: none;
-  font-weight: bold;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.color1 {
-  background-color: black;
-  color: greenyellow;
-}
-
-.color2 {
-  background-color: orange;
-  color: white;
-}
-/* ┌─────────────────────────────────────────┐
-   │ メインビジュアル                        │
-   │ - 全幅の背景画像                        │
-   │ - 「完全燃焼」の大文字を重ねる          │
-   │ - キャッチコピーをabsoluteで配置        │
-   └─────────────────────────────────────────┘ */
-
-/* メインビジュアル全体（背景+テキストを重ねる） */
-.mainvisual_area {
-  position: relative;
-  width: 100%;
-  height: 75rem; /* ビューポートの高さに合わせる */
-  background: blue;
-}
-
-/* スライド背景コンテナ */
-.mainvisual_bg {
-  position: relative;
-  height: 70rem;
-
-  width: 100%;
-  overflow: hidden;
-  border-color: black;
-  border-radius: 0 0 50% 50%/ 0px 0px 40px 50px;
-}
-
-/* スライド背景1枚（アニメーション切替用） */
-.mainvisual_slide {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  position: absolute;
-  will-change: opacity, transform;
-  transform-origin: center center;
-  animation: slideshow 15s infinite; /* 5s × 3枚 */
-  background-size: cover;
-  background-position: center;
-}
-
-/* 1枚目 */
-.mainvisual_slide1 {
-  background-image: url("../img/top/hero_img_01.jpg");
-}
-
-/* 2枚目 */
-.mainvisual_slide2 {
-  background-image: url("../img/top/hero_img_06.jpg");
-  animation-delay: 5s;
-}
-
-/* 3枚目 */
-.mainvisual_slide3 {
-  background-image: url("../img/top/hero_img_10.jpg");
-  animation-delay: 10s;
-}
-
-@keyframes slideshow {
-  0% {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-  8% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  33% {
-    opacity: 1;
-    transform: scale(1.02);
-  }
-  41% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-}
-
-.mainvisual_content {
-  position: absolute;
-  top: 40rem;
-  left: 7rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 左寄せ */
-  justify-content: flex-start; /* 縦中央 */
-  z-index: 10;
-}
-
-.mainvisual_video {
-  position: absolute;
-  top: 23rem;
-  left: 27rem;
-  z-index: 20;
-  width: 25rem;
-  height: auto;
-  object-fit: cover;
-  background-color: transparent;
-  mix-blend-mode: screen;
-}
-
-/* テキストコンテナ */
-.mainvisual_title {
-  width: 50rem;
-  height: auto;
-
-  object-fit: cover;
-  background-color: white;
-}
-
-/* キャッチコピー文 */
-.mainvisual_sub_title {
-  width: fit-content;
-  height: 5rem;
-  font-size: 3.5rem;
-  font-weight: bold;
-
-  color: blue;
-
-  background-color: white;
-}
-
-.title_position1 {
-  margin-top: 2rem;
-  top: 40rem;
-  left: 7rem;
-}
-
-.title_position2 {
-  margin-top: 1rem;
-  top: 50rem;
-  left: 7rem;
-}
-
-/* ┌─────────────────────────────────────────┐➂
-   │ メッセージ                          │
-   │ - 青いグラデーション背景                │
-   │ - 社員写真5枚（各位置に配置）           │
-   │ - 中央メッセージ + 手書き文字 + ボタン  │
-   └─────────────────────────────────────────┘ */
-
-/* セクション全体（position: relativeのキャンバス） */
-.message_area {
-  position: relative;
-  width: 100%;
-  height: 120rem;
-  background: rgb(220, 211, 211);
-  overflow: hidden;
-}
-
-.message_content_wrapper {
-  background-color: white;
-}
-
-/* 背景（高さの基準） */
-.message_background {
-  width: 100%;
-  height: 80rem;
-  background: linear-gradient(180deg, blue 0%, #1e83c7 100%);
-
-  /* 中心を左上に置き、右側へ緩やかに引き伸ばすベースです */
-  clip-path: ellipse(100% 100% at 70% 0%);
-}
-
-/* 背景 白い丸いグラデーションは、  */
-.message_white_circle {
-  height: 45rem;
-  width: 120%;
-  background: white;
-  /* 中心を左上に置き、右側へ緩やかに引き伸ばすベースです */
-  clip-path: ellipse(60% 80% at 40% 10%);
-}
-
-/* 写真コンテナ。数種類の細かい画像（sectionに重なる） */
-.message_photos {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
-/* 社員写真1枚 */
-.message_photo_img {
-  position: absolute;
-  z-index: 10;
-  height: auto;
-  opacity: 0;
-  transform: translateY(3rem);
-  transition: all 1s ease;
-}
-
-.photo1 {
-  top: 5rem;
-  left: 5rem;
-  width: 10rem;
-}
-.photo2 {
-  top: 20rem;
-  right: 5rem;
-  width: 15rem;
-}
-.photo3 {
-  top: 30rem;
-  left: 0;
-  width: 20rem;
-}
-.photo4 {
-  top: 50rem;
-  right: 15rem;
-  width: 20rem;
-}
-
-.photo5 {
-  top: 60rem;
-  left: 25rem;
-  width: 18rem;
-}
-
-/* 中央メッセージエリア（sectionに重なる） */
-.message_content {
-  width: 100%;
-  text-align: center;
-  padding-top: 10rem;
-}
-
-/* メッセージテキスト */
-.message_text {
-  color: white;
-  margin-top: 2rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-/* 手書きキャッチコピー画像 */
-.message_catchcopy {
-  margin-top: 5rem;
-  width: 40rem;
-  height: auto;
-}
-
-/* ┌─────────────────────────────────────────┐
-   │ 会社を知る                                │
-   │ - 社員インタビュー5名分                 │
-   │ - カード型のレイアウト                  │
-   │ - 画像+名前+職種を並べる               │
-   └─────────────────────────────────────────┘ */
-
-.company_area {
-  width: 100%;
-  height: 80rem; /* ビューポートの高さに合わせる */
-  background: rgb(220, 211, 211);
-  color: blue;
-  padding: 0 var(--side-width);
-}
-
-.company_title {
-  font-size: 9rem;
-  font-weight: bold;
-  transform: translateY(-9rem);
-}
-.company_sub_title {
-  font-size: 1.5rem;
-  transform: translateY(-9rem);
-}
-
-.company_msg {
-  font-size: 3rem;
-  font-weight: bold;
-  transform: translateY(-7rem);
-}
-
-/* 親の箱（カード全体） */
-.summary_area {
-  width: 100%;
-  height: 100rem;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-
-  display: flex; /* 子要素を横並びにする */
-  align-content: flex-start;
-  flex-wrap: wrap;
-
-  column-gap: 1rem;
-  row-gap: 1rem;
-}
-
-/* 上段の２画像それぞれの共通親コンテナ */
-.summary_container {
-  width: calc(50% - 0.5rem); /* gapの半分を引く */
-  height: auto;
-  /* overflow: hidden; */
-  object-fit: cover;
-  position: relative; /* ここで文字；→を絶対配置するため */
-
-  background-color: white;
-}
-
-/* 画像の共通スタイル。上段の２画像に適用される。imgタグ */
-.summary_logo {
-  padding: 2rem 2rem;
-  position: relative;
-  display: block;
-  width: 100%;
-
-  object-fit: contain;
-
-  z-index: 5;
-}
-/* 文字のあとに〇で囲んだ→矢印  親コンテナ*/
-.view_more_btn {
-  position: absolute;
-  width: 15rem;
-  bottom: 1rem;
-  left: 3rem;
-
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  z-index: 15; /* 画像より前面に表示 */
-}
-
-.view_more_text {
-  display: block;
-  width: 70%;
-  height: 2rem;
-  line-height: 2rem;
-  font-size: 2rem;
-
-  font-weight: bold;
-  color: transparent; /* ← 実テキスト非表示 */
-
-  overflow: hidden;
-  position: relative;
-}
-
-.view_more_text::before {
-  content: attr(data-text);
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  color: black;
-
-  transform: translateY(0); /* 初期状態ではテキストが見える位置 */
-  transition: transform 0.3s ease;
-}
-
-.view_more_text::after {
-  content: attr(data-text);
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  color: black;
-
-  transform: translateY(100%); /* 下に隠す */
-  transition: transform 0.3s ease;
-}
-
-/* ホバー時に同時にアニメーションをかける */
-
-.summary_container:hover .view_more_text::before {
-  transform: translateY(-100%); /* 上に隠す */
-}
-
-.summary_container:hover .view_more_text::after {
-  transform: translateY(0%);
-}
-
-.arrow_icon {
-  flex: 1;
-  background: #111;
-
-  color: #fff;
-  font-size: 1.5rem;
-
-  border-radius: 50%;
-  width: 4rem;
-  font-weight: bold;
-
-  height: 4rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative; /* ★ ::before の基準点 */
-  overflow: hidden; /* ★ はみ出し防止 */
-
-  isolation: isolate; /* ★ これを追加（新しい重なり文脈を作る） */
-}
-
-/* --- ホバーで中心から広がる色 --- */
-.arrow_icon::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 0%, #fff 44%, #00b4f7 100%);
-  /* ↑ 中心=白  中間=白  外側=青 */
-  transform: scale(0); /* ★ 通常は見えない */
-  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  z-index: -1;
-}
-
-/* --- 親ホバーで広がる --- */
-.summary_container:hover .arrow_icon::before {
-  transform: scale(1.02); /* ★ 中心から外に広がる */
-}
-
-/* --- 親ホバーで広がる --- */
-.summary_container:hover .arrow_icon {
-  color: black;
-}
-
-.summary_logo1 {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.summary_under_logo {
-  width: calc(50% - 0.5rem);
-  height: 30rem;
-  object-fit: cover;
-  display: block;
-}
-
-/* ┌─────────────────────────────────────────┐
-   │ 事業紹介                        │                   │
-   └─────────────────────────────────────────┘ */
-.business_area {
-  position: relative;
-  z-index: -1;
-  width: 100%;
-  height: 100rem;
-  background: rgb(220, 211, 211);
-  color: blue;
-  padding: 0 var(--side-width);
-  clip-path: ellipse(140% 100% at 20% 0%);
-  display: flex;
-  align-items: center;
-  justify-self: center;
-}
-
-.car_img {
-  width: calc(50% - 0.5rem);
-}
-
-.message_main_text {
-  font-size: 7rem;
-  font-weight: bold;
-  color: black;
-}
-
-.message_text {
-  font-size: 1.5rem;
-  color: black;
-}
-
-/* ┌─────────────────────────────────────────┐
-   │ 人を知る                                │
-   │ - 社員インタビュースライダー（4枚）     │
-   │ - View Moreボタン                       │
-   └─────────────────────────────────────────┘ */
-.human_area {
-  width: 100%;
-  height: 100rem; /* ビューポートの高さに合わせる */
-  /* background: rgb(255, 255, 255); */
-  color: blue;
-  padding: 0 0 var(--side-width) var(--side-width);
-
-  margin-top: -10rem; /* human_areaの楕円の下にもぐり込む */
-
-  position: relative;
-}
-
-/* 疑似要素を利用してz-indexをを子要素（タイトル）より下に配置する */
-.human_area::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  /* 中心を左上に置き、右側へ緩やかに引き伸ばすベースです */
-  clip-path: ellipse(140% 100% at 70% 0%);
-  z-index: -2; /* タイトルより下に配置 */
-}
-
-.human_area .company_title {
-  transform: translateY(-9rem);
-}
-
-.human_area .culture_sub_title {
-  font-size: 1.5rem;
-  transform: translateY(-9rem);
-}
-.human_area .company_title,
-.human_area .culture_sub_title,
-.human_area .company_msg {
-  position: relative;
-  z-index: 6; /* これでタイトルが背景より前に出る */
-}
-
-.slider {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  gap: 1rem;
-  overflow: hidden;
-}
-
-.slider .slick-slide {
-  margin: 0 0.5rem; /* 左右にギャップ */
-}
-
-.slider_item {
-  width: calc((100% - 3rem) / 3.5); /* 3枚表示、gapを考慮して計算 */
-  height: 100%;
-  flex-shrink: 0;
-}
-
-/* 文字のあとに〇で囲んだ→矢印  親コンテナ*/
-.human_view_btn {
-  position: absolute;
-  width: 18rem;
-  gap: 1rem;
-  top: 6rem;
-  right: 5rem;
-
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-
-  z-index: 15; /* 画像より前面に表示 */
-}
-
-.human_view_btn:hover .view_more_text::before {
-  transform: translateY(-100%); /* 上に隠す */
-}
-
-.human_view_btn:hover .view_more_text::after {
-  transform: translateY(0%);
-}
-
-/* --- 親ホバーで広がる --- */
-.human_view_btn:hover .arrow_icon::before {
-  transform: scale(1.02); /* ★ 中心から外に広がる */
-}
-
-/* --- 親ホバーで広がる --- */
-.human_view_btn:hover .arrow_icon {
-  color: black;
-}
-
-/* ┌─────────────────────────────────────────┐
-   │ Culture                            │                       │
-   └─────────────────────────────────────────┘ */
-.culture_area {
-  width: 100%;
-  height: 80rem; /* ビューポートの高さに合わせる */
-  color: blue;
-  padding: 0 var(--side-width);
-
-  margin-top: -20rem; /* human_areaの楕円の下にもぐり込む */
-
-  position: relative;
-}
-
-/* 疑似要素を利用してz-indexをを子要素（タイトル）より下に配置する */
-.culture_area::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(220, 211, 211);
-  /* 中心を左上に置き、右側へ緩やかに引き伸ばすベースです */
-  clip-path: ellipse(140% 100% at 70% 0%);
-  z-index: -3; /* タイトルより下に配置 */
-}
-
-.culture_area .company_title {
-  transform: translateY(-9rem);
-}
-
-.culture_area .culture_sub_title {
-  font-size: 1.5rem;
-  transform: translateY(-9rem);
-}
-.culture_area .company_title,
-.culture_area .culture_sub_title,
-.culture_area .company_msg {
-  position: relative;
-  z-index: 6; /* これでタイトルが背景より前に出る */
-}
-
-.culture_list {
-  display: flex;
-  gap: 1rem;
-  margin-top: 5rem;
-}
-
-.culture_item {
-  width: calc(50% - 0.5rem);
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-/* ┌─────────────────────────────────────────┐
-   │ Join us! 採用情報                        │                       │
-   └─────────────────────────────────────────┘ */
-
-.recruit_area {
-  width: 100%;
-  height: 130rem; /* ビューポートの高さに合わせる */
-  color: white;
-  padding: 0 var(--side-width);
-
-  margin-top: -20rem; /* human_areaの楕円の下にもぐり込む */
-
-  /* 中心を左上に置き、右側へ緩やかに引き伸ばすベースです */
-  position: relative;
-}
-
-.recruit_area::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: blue;
-  clip-path: ellipse(140% 100% at 20% 0%);
-  z-index: -4;
-}
-
-.recruit_area .company_title {
-  position: relative;
-  z-index: 4; /* これでタイトルが背景より前に出る */
-}
-
-.recruit_area .company_msg {
-  position: relative;
-  z-index: 4; /* これでタイトルが背景より前に出る */
-}
-
-.recruit_buttons {
-  display: flex;
-  width: 30rem;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 5rem;
-}
-
-.recruit_list {
-  display: flex;
-  width: 35rem;
-  height: 10rem;
-  justify-content: space-between;
-  align-items: center;
-
-  border-radius: 2rem;
-
-  padding: 1rem 2rem;
-}
-
-.recruit_color1 {
-  background-color: white;
-  color: black;
-}
-
-.recruit_color2 {
-  background-color: orange;
-  color: white;
-}
-
-.recruit_button {
-  height: 100%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-decoration: none;
-}
-
-.recruit_arrow {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  /* 円形 */
+  top: 1.5rem;
+  right: 2rem;
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
-  background-color: black;
+  cursor: pointer;
+  z-index: 1000; /* メニューが他の要素より前に表示されるようにする */
+  background-color: rgb(48, 25, 25);
+}
 
+/* ハンバーガーメニューのバー */
+.bar {
+  position: absolute;
+  transition: 0.3s;
+  top: 2rem;
+  left: 0;
+  height: 0.2rem;
+  width: 3.5rem;
+  background: white; /* バーの色を白に設定 */
+}
+
+.bar:nth-child(1) {
+  top: 0.6rem;
+}
+.bar:nth-child(2) {
+  top: 1.4rem;
+}
+.bar:nth-child(3) {
+  top: 2.2rem;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ ハンバーガーメニュー押下時のアニメーション                        │
+   └─────────────────────────────────────────┘ */
+/* ハンバーガーメニューがおされたら、「×」にする */
+.hamburger_menu.open .bar:nth-child(1) {
+  transform: rotate(45deg);
+  top: 1.5rem;
+}
+.hamburger_menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger_menu.open .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 1.5rem;
+}
+
+/* 左上のロゴ */
+.main_logo {
+  position: fixed;
+
+  top: 1.5rem;
+  left: 2rem;
+
+  width: 15rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  color: white;
+  background-color: black;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ mainvisual(３本の花の画像が表示される)                      │
+   └─────────────────────────────────────────┘ */
+
+.main_area {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+  z-index: 100;
+}
+
+.main_logo_img {
+  flex: 1;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ mainvisual(３本の花の画像が表示される)                      │
+   └─────────────────────────────────────────┘ */
+.imformation_area {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.section_title {
+  width: 20rem;
+  margin: 0 auto;
+  font-size: 5rem;
 }
