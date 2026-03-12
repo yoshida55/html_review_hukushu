@@ -209,22 +209,29 @@ body {
 /* ┌─────────────────────────────────────────┐
    │ ACCESS　パララックス　前面に文字を通過させる                        │
    └─────────────────────────────────────────┘ */
+.access_area {
+  position: relative;
+  min-height: 200vh;
+}
+
 .bg {
-  background: url("../img/bg.jpg") center;
-  background-attachment: fixed;
-  /* position: fixed; */
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100vw;
   height: 100vh;
-  z-index: -1;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../img/bg.jpg") center / cover no-repeat;
+  z-index: 0;
 }
 
 .content {
   position: relative;
-  z-index: 100;
-  color: white; /* 文字を見やすくする */
-  margin: 0 auto;
+  z-index: 1;
+  min-height: 200vh;
+  margin: -100vh auto 0;
+  padding: 50vh 20px 30vh;
+  box-sizing: border-box;
+  color: white;
   text-align: center;
 }
 

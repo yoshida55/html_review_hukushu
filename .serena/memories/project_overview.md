@@ -1,0 +1,1 @@
+Static front-end practice project for an exhibition/rose company landing page. Tech stack is plain HTML, CSS, and JavaScript on Windows. Main entry point is index.html. Structure is simple: css/ for reset/style/work styles, img/ for assets, js/work.js for page behavior. No build system or package manager files were found.

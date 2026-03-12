@@ -1,0 +1,1 @@
+Project uses plain static files with class-based styling. CSS class names mostly use lowercase with underscores, grouped by page section (e.g. header_area, info_title, gallery_items). HTML is section-based and comments mark major page blocks. Keep edits minimal and consistent with existing naming and formatting.

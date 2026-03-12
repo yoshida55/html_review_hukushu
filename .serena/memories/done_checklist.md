@@ -1,0 +1,1 @@
+After changes, verify the affected HTML/CSS/JS in the browser. Since no automated tests or linters were found, rely on manual visual verification and `git status --short` to confirm intended file changes only.
