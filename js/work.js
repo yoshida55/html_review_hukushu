@@ -11,7 +11,7 @@ hamburgerBtn.addEventListener("click", function () {
 });
 
 // アクセスセクションがスクロールされた時だけ背景の画像を表示
-const accessSection = document.querySelector(".access_area");
+const accessSection = document.querySelector(".access_title");
 const accessBg = document.querySelector(".bg");
 window.addEventListener("scroll", function () {
   const accessSectionTop = accessSection.getBoundingClientRect().top;
