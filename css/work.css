@@ -25,7 +25,6 @@ body {
   width: 100%;
   height: 100vh;
   background-color: transparent;
-  border: 0.5rem solid white;
   z-index: 101;
 }
 
@@ -110,7 +109,6 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  border: 0.5rem solid red;
   /* overflow: hidden; */
 }
 
@@ -172,6 +170,7 @@ body {
   width: 100%;
   text-align: center;
   padding: 0 var(--side_width);
+  margin-bottom: 15rem;
 }
 
 .gallery_title {
@@ -182,14 +181,12 @@ body {
   margin-top: 2rem;
   margin-bottom: 4rem;
   font-size: 4rem;
-  border: 0.5rem solid red;
 }
 
 /* 花の画像のコンテナ */
 .gallery_items {
   width: 100%;
   height: auto;
-  border: 0.5rem solid red;
 }
 
 .gallery_flower:nth-child(odd) {
@@ -218,10 +215,15 @@ body {
   position: sticky;
   top: 0;
   height: 100vh;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("../img/bg.jpg") center / cover no-repeat;
-  z-index: 0;
+  background: url("../img/bg.jpg") center / cover no-repeat;
+  z-index: -1;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.bg.visible {
+  opacity: 1;
 }
 
 .content {

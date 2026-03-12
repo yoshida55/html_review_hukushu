@@ -9,3 +9,16 @@ hamburgerBtn.addEventListener("click", function () {
   // ナビゲーションメニューを表示・非表示にする
   // gNav.classList.toggle("open");
 });
+
+// アクセスセクションがスクロールされた時だけ背景の画像を表示
+const accessSection = document.querySelector(".access_area");
+const accessBg = document.querySelector(".bg");
+window.addEventListener("scroll", function () {
+  const accessSectionTop = accessSection.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+  if (accessSectionTop < windowHeight) {
+    accessBg.classList.add("visible");
+  } else {
+    accessBg.classList.remove("visible");
+  }
+});
