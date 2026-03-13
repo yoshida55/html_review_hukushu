@@ -5,6 +5,14 @@
 :root {
   max-width: 144rem;
   --side_width: 15rem;
+
+  /* z-index 管理 */
+  --z-bg: -1; /* .bg（背景画像） */
+  --z-content: 1; /* .content（アクセスセクションのテキスト） */
+  --z-main: 101; /* .main_area（メインビジュアル） */
+  --z-overlay: 400; /* .global_menu（ハンバーガーメニュー開いた時のオーバーレイ） */
+  --z-button: 401; /* .hamburger_menu（×ボタン・常にオーバーレイより前面） */
+  --z-header: 500; /* .header_area（ヘッダー全体） */
 }
 
 .under_title {
@@ -27,13 +35,13 @@ body {
    │ ヘッダー（headerハンバーガメニュー& 押下時のメニュー画面 z-index 500）                      │
    └─────────────────────────────────────────┘ */
 .header_area {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 20rem;
   background-color: transparent;
-  z-index: 101;
+  position: fixed;
+  z-index: 500;
 }
 
 /* ハンバーガーメニュー */
@@ -47,17 +55,46 @@ body {
   /* メニューが他の要素より前に表示されるようにする */
   background-color: black;
   overflow: hidden;
+
+  z-index: 401;
+}
+
+.global_menu {
+  height: 30rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 400;
+}
+
+.hamburger_menu.open ~ .global_menu {
+  display: flex;
+}
+
+.global_menu_link {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: white;
 }
 
 /* ハンバーガーメニューのバー */
 .bar {
   position: absolute;
+  display: block;
   transition: 0.3s;
   top: 2rem;
   left: 0;
   height: 0.2rem;
   width: 3rem;
-  background: white; /* バーの色を白に設定 */
+  background: white;
 }
 
 .bar:nth-child(1) {
@@ -93,7 +130,6 @@ body {
   top: 1.5rem;
   left: 2rem;
 
-  width: 15rem;
   height: 3rem;
   font-size: 2rem;
 
@@ -109,8 +145,6 @@ body {
   width: 100%;
   height: 100vh;
 
-  position: relative;
-  z-index: 100;
   box-sizing: border-box;
 
   display: flex;
@@ -133,6 +167,8 @@ body {
 .main_area {
   width: 100%;
   height: 100vh;
+  position: relative;
+  z-index: 101;
 }
 
 .section_title {
@@ -156,7 +192,14 @@ body {
   margin-top: 8rem;
   margin-bottom: 20rem;
   font-size: 9rem;
-  border: 0.5rem solid red;
+}
+
+.info_subtitle {
+  text-decoration: underline;
+  text-decoration-thickness: 1px; /* アンダーラインの太さ */
+  text-underline-offset: 2rem; /* 隙間を大きく */
+  font-size: 8rem;
+  margin-bottom: 10rem;
 }
 
 .under_title {
@@ -295,6 +338,15 @@ body {
   width: 100%;
   text-align: center;
   padding: 0 var(--side_width);
+  margin-bottom: 40rem;
+}
+
+.contact_title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px; /* アンダーラインの太さ */
+  text-underline-offset: 2rem; /* 隙間を大きく */
+  font-size: 8rem;
+  margin-bottom: 10rem;
 }
 
 .contact_link {
@@ -311,22 +363,13 @@ body {
   position: relative;
 }
 
-/* 矢印 → */
-.contact_link::after {
-  content: "→";
-  position: absolute;
-  right: 3rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 /* 横線 */
 .contact_link::after {
   content: "";
   position: absolute;
   top: 50%;
   right: -3rem;
-  width: 20rem;          /* 線の長さ */
+  width: 20rem; /* 線の長さ */
   height: 1px;
   background-color: white;
   transform: translateY(-50%);
@@ -337,7 +380,7 @@ body {
   content: "";
   position: absolute;
   top: 50%;
-  right: -3rem;          /* 横線の右端と同じ値 */
+  right: -3rem; /* 横線の右端と同じ値 */
   width: 0.7rem;
   height: 0.7rem;
   border-top: 1px solid white;
@@ -345,36 +388,44 @@ body {
   transform: translateY(-50%) rotate(45deg);
 }
 
-
-/* ✨
-「矢印の棒の長さ」を変えるには、主に2つの方法があります。
-
-### 1. 別の記号を使う（一番簡単）
-「→」という文字自体を変えるのが最も手軽です。
-*   `content: "──→";` （ハイフンを増やす）
-*   `content: "────→";`
-
-### 2. 下線（border）で線を引く（おすすめ）
-「→」の左側に線を引く方法です。これなら長さが自由自在です。
-
-.contact_link::after {
-  content: "→";
-  /* 矢印の左側に線を追加 */
-  border-bottom: 1px solid currentColor; 
-  /* 線の長さ（幅）を指定 */
-  width: 50px; 
-  /* 文字と線を並べるために必要 */
-  display: inline-flex;
-  align-items: center;
-  
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10rem;
+/* ┌─────────────────────────────────────────┐
+   │ フッター                        │
+   └─────────────────────────────────────────┘ */
+.border {
+  width: 100%;
+  border: 0.01rem solid white;
+  margin-bottom: 10rem;
 }
 
-**ポイント:**
-*   `width` の数値を大きくすると線が長くなります。
-*   もし文字と線が重なる場合は、`padding-right` などで微調整してください。
-*/
+.footer_area {
+  padding: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.footer_text {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.text_container {
+  margin-bottom: 5rem;
+}
+
+.sns_container {
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: left;
+
+  gap: 2rem;
+}
+
+.policy_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  font-size: 1.5rem;
+}

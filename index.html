@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/work.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body>
     <!-- ===============================================
@@ -26,7 +27,7 @@
 
       <!-- 左上のロゴ -->
       <div>
-        <a class="main_logo">Rose Company</a>
+        <a class="main_logo">FA EXHIBITION</a>
       </div>
 
       <!-- ハンバーガメニュー押下時のメニュー表示部分 -->
@@ -34,13 +35,12 @@
       <!-- <div>
         <<!-->
       <!-- 画面中央に配置 フレックスで縦に並べる -->
-      <!-- <nav class="global_menu">
-          <a href="#" class="global_menu_link">トップ</a>
-          <a href="#" class="global_menu_link">会社概要</a>
-          <a href="#" class="global_menu_link">採用情報</a>
-          <a href="#" class="global_menu_link">お問い合わせ</a>
-        </nav>
-      </div>  -->
+      <nav class="global_menu">
+        <a href="#" class="global_menu_link">トップ</a>
+        <a href="#" class="global_menu_link">会社概要</a>
+        <a href="#" class="global_menu_link">採用情報</a>
+        <a href="#" class="global_menu_link">お問い合わせ</a>
+      </nav>
     </header>
     <!-- ===============================================
      mainvisual(３本の花の画像が表示される)
@@ -55,28 +55,32 @@
      Information
      ============================================== -->
     <section class="info_area">
-      <h2 class="info_title">Hello Flower!<br />FA EXHIBITION 2021</h2>
-      <h2 class="under_title">INFORMATION</h2>
-      <p class="info_date">2021 JUL 1(THU)-3(SAT)</p>
-      <p class="info_hour">DAY1 10am-6pm OTHER 10am-5:30pm</p>
+      <div data-aos="fade-up" data-aos-duration="1500">
+        <h2 class="info_title">Hello Flower!<br />FA EXHIBITION 2021</h2>
+        <h2 class="info_subtitle">INFORMATION</h2>
+        <p class="info_date">2021 JUL 1(THU)-3(SAT)</p>
+        <p class="info_hour">DAY1 10am-6pm OTHER 10am-5:30pm</p>
 
-      <p class="info_place">2021 JUL 1(THU)-3(SAT)</p>
+        <p class="info_place">2021 JUL 1(THU)-3(SAT)</p>
 
-      <p class="info_date_japanese">2021年7月1日(木)ー3日(土)</p>
-      <p class="info_hour_japanese">Day1 10時〜18時　その他 10時〜17時30分</p>
+        <p class="info_date_japanese">2021年7月1日(木)ー3日(土)</p>
+        <p class="info_hour_japanese">Day1 10時〜18時　その他 10時〜17時30分</p>
+      </div>
     </section>
 
     <!-- ===============================================
      GALLERY
      ============================================== -->
     <section class="gallery_area">
-      <h2 class="under_title">GALLERY</h2>
-      <div class="gallery_items">
-        <img class="gallery_flower gallery_format" src="img/flower1.jpg" alt="ギャラリー１" />
-        <img class="gallery_flower gallery_format" src="img/flower2.jpg" alt="ギャラリー２" />
-        <img class="gallery_flower gallery_format" src="img/flower3.jpg" alt="ギャラリー３" />
-        <img class="gallery_flower gallery_format" src="img/flower4.jpg" alt="ギャラリー４" />
-        <img class="gallery_flower gallery_format" src="img/flower5.jpg" alt="ギャラリー５" />
+        <h2 class="under_title">GALLERY</h2>
+        <div class="gallery_items">
+          <div data-aos="fade-up" data-aos-duration="1500">
+          <img class="gallery_flower gallery_format" src="img/flower1.jpg" alt="ギャラリー１" />
+          <img class="gallery_flower gallery_format" src="img/flower2.jpg" alt="ギャラリー２" />
+          <img class="gallery_flower gallery_format" src="img/flower3.jpg" alt="ギャラリー３" />
+          <img class="gallery_flower gallery_format" src="img/flower4.jpg" alt="ギャラリー４" />
+          <img class="gallery_flower gallery_format" src="img/flower5.jpg" alt="ギャラリー５" />
+        </div>
       </div>
     </section>
 
@@ -98,10 +102,38 @@
    CONTACT お問合せ　リンク矢印
    =============================================== -->
     <section class="contact_area">
-      <h2 class="under_title">CONTACT</h2>
+      <h2 class="contact_title">CONTACT</h2>
       <a href="#" class="contact_link" href="#">出展に関するお問い合わせ</a>
       <a href="#" class="contact_link" href="#">その他のお問い合わせ</a>
     </section>
+
+    <!-- ===============================================
+   footer 連絡先　SNSなど
+   =============================================== -->
+    <div class="border"></div>
+    <!-- flex 所在地とプライバシーポリシーの横２列 -->
+    <section class="footer_area">
+      <div class="text_container">
+        <p class="footer_text">FA EXHIBITION</p>
+        <p class="footer_text">〒152-0035 東京都目黒区自由が丘1-1-1 PARK SIDE HALL</p>
+        <p class="footer_text">Tel: 03-1111-1111</p>
+        <p class="footer_text">E-mail: info@xxxxxx.jp</p>
+
+        <div class="sns_container">
+          <a class="sns_link">Twitter</a>
+          <a class="sns_link">Facebook</a>
+          <a class="sns_link">Instagram</a>
+        </div>
+      </div>
+      <div class="policy_content">
+        <p class="policy_text">PRIVACY POLICY</p>
+        <p class="office_text">@FA EXHIBITION</p>
+      </div>
+    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="js/work.js"></script>
   </body>
 </html>
