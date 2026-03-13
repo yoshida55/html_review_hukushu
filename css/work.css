@@ -4,7 +4,15 @@
 
 :root {
   max-width: 144rem;
-  --side_width: 35rem;
+  --side_width: 15rem;
+}
+
+.under_title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px; /* アンダーラインの太さ */
+  text-underline-offset: 2rem; /* 隙間を大きく */
+  font-size: 8rem;
+  margin-bottom: 10rem;
 }
 
 body {
@@ -145,21 +153,23 @@ body {
 }
 
 .info_title {
-  margin-top: 5rem;
-  font-size: 5rem;
+  margin-top: 8rem;
+  margin-bottom: 20rem;
+  font-size: 9rem;
+  border: 0.5rem solid red;
 }
 
-.info_Information {
+.under_title {
   text-decoration: underline;
-
-  text-underline-offset: 1.2rem; /* 隙間を大きく */
-  margin-top: 2rem;
-  font-size: 4rem;
+  text-decoration-thickness: 1px; /* アンダーラインの太さ */
+  text-underline-offset: 2rem; /* 隙間を大きく */
+  font-size: 8rem;
+  margin-bottom: 10rem;
 }
 
 .info_date {
   margin-top: 2rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 /* ┌─────────────────────────────────────────┐
@@ -208,7 +218,7 @@ body {
    └─────────────────────────────────────────┘ */
 .access_area {
   position: relative;
-  min-height: 100vh; /* 200vh → 100vh */
+  height: 100vh; /* 200vh → 100vh */
 }
 
 .bg {
@@ -227,6 +237,14 @@ body {
   opacity: 1;
 }
 
+.access_title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px; /* アンダーラインの太さ */
+  text-underline-offset: 2rem; /* 隙間を大きく */
+  font-size: 8rem;
+  margin-bottom: 10rem;
+}
+
 .content {
   position: relative;
   z-index: 1;
@@ -234,13 +252,6 @@ body {
   box-sizing: border-box;
   color: white;
   text-align: center;
-}
-
-.access_title {
-  font-size: 3rem;
-  text-underline-offset: 1rem;
-  margin-bottom: 2rem;
-  text-decoration: underline;
 }
 
 .access_Information {
@@ -267,9 +278,103 @@ body {
 .access_map {
   display: inline-block;
   border: 2px solid #fff;
-  padding: 1rem 4rem;
+  padding: 3rem 8rem;
   color: #fff;
   text-decoration: none;
   font-size: 1.4rem;
   letter-spacing: 0.2em;
+  cursor: pointer;
 }
+
+/* ┌─────────────────────────────────────────┐
+   │ CONTACT お問合せ　リンク矢印                      │
+   └─────────────────────────────────────────┘ */
+
+.contact_area {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 0 var(--side_width);
+}
+
+.contact_link {
+  display: block;
+  width: 65rem;
+  padding: 3rem 8rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4rem;
+  margin: 0 auto 2rem auto;
+  cursor: pointer;
+  border: 0.1rem solid white;
+
+  position: relative;
+}
+
+/* 矢印 → */
+.contact_link::after {
+  content: "→";
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 横線 */
+.contact_link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -3rem;
+  width: 20rem;          /* 線の長さ */
+  height: 1px;
+  background-color: white;
+  transform: translateY(-50%);
+}
+
+/* 矢印の先端（くの字） */
+.contact_link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -3rem;          /* 横線の右端と同じ値 */
+  width: 0.7rem;
+  height: 0.7rem;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+
+/* ✨
+「矢印の棒の長さ」を変えるには、主に2つの方法があります。
+
+### 1. 別の記号を使う（一番簡単）
+「→」という文字自体を変えるのが最も手軽です。
+*   `content: "──→";` （ハイフンを増やす）
+*   `content: "────→";`
+
+### 2. 下線（border）で線を引く（おすすめ）
+「→」の左側に線を引く方法です。これなら長さが自由自在です。
+
+.contact_link::after {
+  content: "→";
+  /* 矢印の左側に線を追加 */
+  border-bottom: 1px solid currentColor; 
+  /* 線の長さ（幅）を指定 */
+  width: 50px; 
+  /* 文字と線を並べるために必要 */
+  display: inline-flex;
+  align-items: center;
+  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10rem;
+}
+
+**ポイント:**
+*   `width` の数値を大きくすると線が長くなります。
+*   もし文字と線が重なる場合は、`padding-right` などで微調整してください。
+*/
+
