@@ -142,34 +142,21 @@ body {
    └─────────────────────────────────────────┘ */
 
 .main_area {
-  width: 100%;
-  height: 100vh;
-
-  box-sizing: border-box;
-
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  /* overflow: hidden; */
+  justify-content: center; /* space-between → center に変更 */
+  overflow-x: hidden; /* コメント外す */
 }
 
 .main_logo_img {
-  display: block;
   width: calc(100% / 3);
-  height: 100%;
+  height: 100vh;
+  flex-shrink: 0; /* 復活させる */
   object-fit: cover;
 }
 
 /* ┌─────────────────────────────────────────┐
    │ mainvisual(３本の花の画像が表示される)                      │
    └─────────────────────────────────────────┘ */
-.main_area {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  z-index: 101;
-}
 
 .section_title {
   width: 20rem;
@@ -361,6 +348,16 @@ body {
   border: 0.1rem solid white;
 
   position: relative;
+}
+
+.contact_link:hover::after {
+  transition: 0.3s;
+  right: -6rem; /* ホバーで表示される */
+}
+
+.contact_link:hover::before {
+  transition: 0.3s;
+  right: -6rem; /* ホバーで表示される */
 }
 
 /* 横線 */
