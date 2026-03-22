@@ -15,10 +15,13 @@
   --z-header: 500; /* .header_area（ヘッダー全体） */
 }
 
-.under_title {
+.info_subtitle,
+.under_title,
+.access_title,
+.contact_title {
   text-decoration: underline;
-  text-decoration-thickness: 1px; /* アンダーラインの太さ */
-  text-underline-offset: 2rem; /* 隙間を大きく */
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 2rem;
   font-size: 8rem;
   margin-bottom: 10rem;
 }
@@ -155,16 +158,6 @@ body {
 }
 
 /* ┌─────────────────────────────────────────┐
-   │ mainvisual(３本の花の画像が表示される)                      │
-   └─────────────────────────────────────────┘ */
-
-.section_title {
-  width: 20rem;
-  margin: 0 auto;
-  font-size: 5rem;
-}
-
-/* ┌─────────────────────────────────────────┐
    │ Information                        │
    └─────────────────────────────────────────┘ */
 
@@ -181,22 +174,6 @@ body {
   font-size: 9rem;
 }
 
-.info_subtitle {
-  text-decoration: underline;
-  text-decoration-thickness: 1px; /* アンダーラインの太さ */
-  text-underline-offset: 2rem; /* 隙間を大きく */
-  font-size: 8rem;
-  margin-bottom: 10rem;
-}
-
-.under_title {
-  text-decoration: underline;
-  text-decoration-thickness: 1px; /* アンダーラインの太さ */
-  text-underline-offset: 2rem; /* 隙間を大きく */
-  font-size: 8rem;
-  margin-bottom: 10rem;
-}
-
 .info_date {
   margin-top: 2rem;
   font-size: 2rem;
@@ -211,16 +188,6 @@ body {
   text-align: center;
   padding: 0 var(--side_width);
   margin-bottom: 40rem; /* height は削除 */
-}
-
-.gallery_title {
-  width: 100%;
-  text-decoration: underline;
-
-  text-underline-offset: 1.2rem; /* 隙間を大きく */
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  font-size: 4rem;
 }
 
 /* 花の画像のコンテナ */
@@ -267,18 +234,10 @@ body {
   opacity: 1;
 }
 
-.access_title {
-  text-decoration: underline;
-  text-decoration-thickness: 1px; /* アンダーラインの太さ */
-  text-underline-offset: 2rem; /* 隙間を大きく */
-  font-size: 8rem;
-  margin-bottom: 10rem;
-}
-
 .content {
   position: relative;
   z-index: 1;
-  padding: 10rem 20px; /* margin: -100vh は削除 */
+  padding: 10rem 2rem; /* margin: -100vh は削除 */
   box-sizing: border-box;
   color: white;
   text-align: center;
@@ -307,7 +266,7 @@ body {
 
 .access_map {
   display: inline-block;
-  border: 2px solid #fff;
+  border: 0.2rem solid #fff;
   padding: 3rem 8rem;
   color: #fff;
   text-decoration: none;
@@ -326,14 +285,6 @@ body {
   text-align: center;
   padding: 0 var(--side_width);
   margin-bottom: 40rem;
-}
-
-.contact_title {
-  text-decoration: underline;
-  text-decoration-thickness: 1px; /* アンダーラインの太さ */
-  text-underline-offset: 2rem; /* 隙間を大きく */
-  font-size: 8rem;
-  margin-bottom: 10rem;
 }
 
 .contact_link {
@@ -367,7 +318,7 @@ body {
   top: 50%;
   right: -3rem;
   width: 20rem; /* 線の長さ */
-  height: 1px;
+  height: 0.1rem;
   background-color: white;
   transform: translateY(-50%);
 }
@@ -380,8 +331,8 @@ body {
   right: -3rem; /* 横線の右端と同じ値 */
   width: 0.7rem;
   height: 0.7rem;
-  border-top: 1px solid white;
-  border-right: 1px solid white;
+  border-top: 0.1rem solid white;
+  border-right: 0.1rem solid white;
   transform: translateY(-50%) rotate(45deg);
 }
 
