@@ -33,9 +33,9 @@ window.addEventListener("scroll", function () {
   const windowHeight = window.innerHeight;
 
   if (infoTitleTop < windowHeight) {
-    hamburgerMenu.style.display = "block";
+    hamburgerMenu.classList.add("visible");
   } else {
-    hamburgerMenu.style.display = "none";
+    hamburgerMenu.classList.remove("visible");
   }
 });
 
@@ -57,3 +57,46 @@ window.addEventListener("scroll", function () {
     });
   }
 });
+
+// GALLERYのタイトルが出現したタイミングで右のサイドリンクを表示
+const galleryArea = document.querySelector(".gallery_area"); // 対象の要素を取得
+const sideArea = document.querySelector(".side_area"); // クラスを付与する要素を取得
+const accessArea = document.querySelector(".access_area"); // 追加：アクセスエリアを取得
+
+window.addEventListener("scroll", function () {
+  const galleryTop = galleryArea.getBoundingClientRect().top;
+  const accessTop = accessArea.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+
+  // 「ギャラリーが画面半分より上」かつ「アクセスエリアがまだ画面下にある（入っていない）」間だけ表示
+  if (galleryTop < windowHeight / 2 && accessTop > windowHeight) {
+    sideArea.classList.add("open");
+  } else {
+    // それ以外（ギャラリー前、またはアクセス後）は非表示
+    sideArea.classList.remove("open");
+  }
+});
+
+/* ✨
+Q: ギャラリータイトルが出現したら,openをside_areaにつける
+
+ご提示のコードの末尾に、以下の処理を追加することで実現できます。
+
+const galleryArea = document.querySelector(".gallery_area"); // 対象の要素を取得
+const sideArea = document.querySelector(".side_area"); // クラスを付与する要素を取得
+
+window.addEventListener("scroll", function () {
+  const galleryTop = galleryArea.getBoundingClientRect().top;
+  
+  // 画面の高さの半分より上にタイトルが来たらクラスを付与、そうでなければ削除
+  if (galleryTop < window.innerHeight / 2) {
+    sideArea.classList.add("open");
+  } else {
+    sideArea.classList.remove("open");
+  }
+});
+
+### 修正のポイント
+1.  **ID指定の修正**: 元のコードにあった `getElementById(".gallery_area...")` はID指定用のため、クラス指定ができる `querySelector` に変更しました。
+2.  **条件判定**: `getBoundingClientRect().top` を使い、要素が画面の上部まで来たタイミングで `classList.add("open")` を実行するようにしています。
+*/
