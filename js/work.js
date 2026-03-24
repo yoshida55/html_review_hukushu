@@ -1,5 +1,5 @@
 // ハンバーガーメニュー選択時にグローバルメニューを表示
-const hamburgerBtn = document.querySelector(".header_area");
+const hamburgerBtn = document.querySelector(".hamburger_menu");
 
 hamburgerBtn.addEventListener("click", function () {
   hamburgerBtn.classList.toggle("open");
@@ -25,7 +25,7 @@ window.addEventListener("scroll", function () {
 });
 
 // Hello Flower!FA EXHIBITION 2021が表示されたら　ハンバーガーメニューを表示
-const headerArea = document.querySelector(".header_area");
+const hamburgerMenu = document.querySelector(".hamburger_menu");
 const infoTitle = document.querySelector(".under_title");
 
 window.addEventListener("scroll", function () {
@@ -33,9 +33,9 @@ window.addEventListener("scroll", function () {
   const windowHeight = window.innerHeight;
 
   if (infoTitleTop < windowHeight) {
-    headerArea.classList.add("visible");
+    hamburgerMenu.classList.add("visible");
   } else {
-    headerArea.classList.remove("visible");
+    hamburgerMenu.classList.remove("visible");
   }
 });
 
@@ -43,17 +43,26 @@ window.addEventListener("scroll", function () {
 
 window.addEventListener("scroll", function () {
   const scrollTop = window.scrollY;
-  const imgs = document.querySelectorAll(".main_logo_img");
+  const imgs = document.querySelectorAll(".main_visual_img");
 
+  // PC表示（900px以上）:
   if (window.innerWidth > 900) {
-    // PC: スクロール量 ÷ 10 を幅に加算（最大70%まで）
+    // PC: 3枚並んだ状態 (33.3%) から、スクロールで中央に向かって拡大（最大70%まで）
     imgs.forEach(function (img) {
       img.style.width = Math.min(100 / 3 + scrollTop / 10, 70) + "%";
     });
   } else {
-    // SP: スクロール量 ÷ 10 を幅から減算（最小70%まで）
-    imgs.forEach(function (img) {
-      img.style.width = Math.max(100 - scrollTop / 10, 70) + "%";
+    // スマホ: 最初は中央の画像が100%で全画面、左右の画像は見えない
+    // スクロールするにつれて、中央の画像が33.3%まで狭まり、3枚が並ぶように戻る
+    imgs.forEach(function (img, index) {
+      if (index === 1) {
+        // 真ん中の画像 (index 1)
+        img.style.width = Math.max(100 - scrollTop / 8, 100 / 3) + "%";
+      } else {
+        // 左右の画像 (index 0, 2)
+        // 真ん中が100%の時は 0% に、真ん中が33.3%になったら 33.3% になるように計算
+        img.style.width = Math.min(scrollTop / 8, 100 / 3) + "%";
+      }
     });
   }
 });

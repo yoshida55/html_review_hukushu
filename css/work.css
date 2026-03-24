@@ -92,10 +92,6 @@ body {
 .hamburger_menu.open ~ .global_menu {
   display: flex;
 }
-/* ↓ これを追加する */
-/* .header_area.visible .hamburger_menu {
-  visibility: visible;
-} */
 .header_area.visible .hamburger_menu {
   opacity: 1;
   visibility: visible;
@@ -131,7 +127,6 @@ body {
 /* ┌─────────────────────────────────────────┐
    │ ハンバーガーメニュー押下時のアニメーション                        │
    └─────────────────────────────────────────┘ */
-/* ハンバーガーメニューがおされたら、「×」にする */
 .hamburger_menu.open .bar:nth-child(1) {
   transform: rotate(45deg);
   top: 1.5rem;
@@ -168,7 +163,7 @@ body {
   overflow-x: hidden;
 }
 
-.main_logo_img {
+.main_visual_img {
   width: calc(100% / 3);
   height: 100vh;
   flex-shrink: 0;
@@ -451,4 +446,134 @@ body {
   align-items: center;
   gap: 3rem;
   font-size: 1.5rem;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ レスポンシブ                        │
+   └─────────────────────────────────────────┘ */
+
+@media screen and (min-width: 76.8rem) {
+  :root {
+    --space-hor: 4rem; /* 上書き */
+    --space-vrt: 16rem;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ ヘッダー（headerハンバーガメニュー& 押下時のメニュー画面 z-index 500）                      │
+   └─────────────────────────────────────────┘ */
+  .header_area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 20rem;
+    width: 100%;
+    background-color: transparent;
+    opacity: 0;
+    z-index: 500;
+  }
+
+  /* ハンバーガーメニュー */
+  .hamburger_menu {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    /* メニューが他の要素より前に表示されるようにする */
+    background-color: black;
+    overflow: hidden;
+
+    /* opacity でふわっとさせるための設定 */
+    visibility: hidden;
+    transition:
+      opacity 1s ease-in-out,
+      visibility 1s;
+  }
+
+  /* JavaScript で .visible クラスがついた時に適用される */
+  .header_area.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .global_menu {
+    height: 30rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 400;
+  }
+
+  .hamburger_menu.open ~ .global_menu {
+    display: flex;
+  }
+  .header_area.visible .hamburger_menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .global_menu_link {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  /* ハンバーガーメニューのバー */
+  .bar {
+    position: absolute;
+    transition: 0.3s;
+    top: 2rem;
+    left: 0;
+    height: 0.2rem;
+    width: 3rem;
+    background: white;
+  }
+
+  .bar:nth-child(1) {
+    top: 0.6rem;
+  }
+  .bar:nth-child(2) {
+    top: 1.4rem;
+  }
+  .bar:nth-child(3) {
+    top: 2.2rem;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ ハンバーガーメニュー押下時のアニメーション                        │
+   └─────────────────────────────────────────┘ */
+  .hamburger_menu.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 1.5rem;
+  }
+  .hamburger_menu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger_menu.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 1.5rem;
+  }
+
+  /* 左上のロゴ */
+  .main_logo {
+    position: fixed;
+
+    top: 1.5rem;
+    left: 2rem;
+
+    height: 3rem;
+    font-size: 2rem;
+
+    color: white;
+    background-color: black;
+  }
 }
