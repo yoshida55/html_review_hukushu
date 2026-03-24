@@ -1,5 +1,5 @@
 // ハンバーガーメニュー選択時にグローバルメニューを表示
-const hamburgerBtn = document.querySelector(".hamburger_menu");
+const hamburgerBtn = document.querySelector(".header_area");
 
 hamburgerBtn.addEventListener("click", function () {
   hamburgerBtn.classList.toggle("open");
@@ -25,7 +25,7 @@ window.addEventListener("scroll", function () {
 });
 
 // Hello Flower!FA EXHIBITION 2021が表示されたら　ハンバーガーメニューを表示
-const hamburgerMenu = document.querySelector(".hamburger_menu");
+const headerArea = document.querySelector(".header_area");
 const infoTitle = document.querySelector(".under_title");
 
 window.addEventListener("scroll", function () {
@@ -33,9 +33,9 @@ window.addEventListener("scroll", function () {
   const windowHeight = window.innerHeight;
 
   if (infoTitleTop < windowHeight) {
-    hamburgerMenu.classList.add("visible");
+    headerArea.classList.add("visible");
   } else {
-    hamburgerMenu.classList.remove("visible");
+    headerArea.classList.remove("visible");
   }
 });
 

@@ -31,23 +31,26 @@ body {
   text-decoration-color: white;
 
   font-size: 5rem;
+  margin-bottom: 10rem;
 }
 
 /* ┌─────────────────────────────────────────┐
    │ ヘッダー（headerハンバーガメニュー& 押下時のメニュー画面 z-index 500）                      │
    └─────────────────────────────────────────┘ */
 .header_area {
+  position: fixed;
   top: 0;
   left: 0;
   height: 20rem;
+  width: 100%;
   background-color: transparent;
-  position: fixed;
+  opacity: 0;
   z-index: 500;
 }
 
 /* ハンバーガーメニュー */
 .hamburger_menu {
-  position: fixed;
+  position: absolute;
   top: 1.5rem;
   right: 2rem;
   width: 3rem;
@@ -57,9 +60,7 @@ body {
   background-color: black;
   overflow: hidden;
 
-  z-index: 401;
   /* opacity でふわっとさせるための設定 */
-  opacity: 0;
   visibility: hidden;
   transition:
     opacity 1s ease-in-out,
@@ -67,7 +68,7 @@ body {
 }
 
 /* JavaScript で .visible クラスがついた時に適用される */
-.hamburger_menu.visible {
+.header_area.visible {
   opacity: 1;
   visibility: visible;
 }
@@ -90,6 +91,14 @@ body {
 
 .hamburger_menu.open ~ .global_menu {
   display: flex;
+}
+/* ↓ これを追加する */
+/* .header_area.visible .hamburger_menu {
+  visibility: visible;
+} */
+.header_area.visible .hamburger_menu {
+  opacity: 1;
+  visibility: visible;
 }
 
 .global_menu_link {
@@ -264,9 +273,11 @@ body {
 }
 
 .gallery_flower:nth-child(odd) {
+  display: block;
   margin-left: auto;
 }
 .gallery_flower:nth-child(even) {
+  display: block;
   margin-right: auto;
 }
 
