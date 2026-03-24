@@ -20,11 +20,7 @@
       "Read(//d/02_作業/00_リンクワーク/HTML自動化/過去の課題/61_応用編：花/**)",
       "Bash(curl -s -X POST http://127.0.0.1:3848/highlight-line -H \"Content-Type: application/json\" --data-binary \"{\"\"filePath\"\": \"\"D:/50_knowledge/01_memo.md\"\", \"\"lineNumber\"\": 7241}\")",
       "Bash(curl -s -X POST http://127.0.0.1:3848/highlight-line -H \"Content-Type: application/json\" --data-binary \"{\"\"filePath\"\": \"\"D:/50_knowledge/01_memo.md\"\", \"\"lineNumber\"\": 17559}\")",
-      "Bash(curl -s -X POST http://127.0.0.1:3848/highlight-line -H \"Content-Type: application/json\" --data-binary \"{\"\"filePath\"\": \"\"D:/50_knowledge/01_memo.md\"\", \"\"lineNumber\"\": 17616}\")",
-      "Edit(~/.claude/skills/review-fix/**)",
-      "Skill(update-config)",
-      "Skill(update-config:*)",
-      "Edit(~/.claude/skills/memo-format/**)"
+      "Bash(curl -s -X POST http://127.0.0.1:3848/highlight-line -H \"Content-Type: application/json\" --data-binary \"{\"\"filePath\"\": \"\"D:/50_knowledge/01_memo.md\"\", \"\"lineNumber\"\": 17616}\")"
     ],
     "additionalDirectories": [
       "D:\\50_knowledge",

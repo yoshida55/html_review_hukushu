@@ -92,6 +92,10 @@ body {
 .hamburger_menu.open ~ .global_menu {
   display: flex;
 }
+/* ↓ これを追加する */
+/* .header_area.visible .hamburger_menu {
+  visibility: visible;
+} */
 .header_area.visible .hamburger_menu {
   opacity: 1;
   visibility: visible;
@@ -127,6 +131,7 @@ body {
 /* ┌─────────────────────────────────────────┐
    │ ハンバーガーメニュー押下時のアニメーション                        │
    └─────────────────────────────────────────┘ */
+/* ハンバーガーメニューがおされたら、「×」にする */
 .hamburger_menu.open .bar:nth-child(1) {
   transform: rotate(45deg);
   top: 1.5rem;
@@ -163,7 +168,7 @@ body {
   overflow-x: hidden;
 }
 
-.main_visual_img {
+.main_logo_img {
   width: calc(100% / 3);
   height: 100vh;
   flex-shrink: 0;
@@ -448,14 +453,22 @@ body {
   font-size: 1.5rem;
 }
 
-/* ┌─────────────────────────────────────────┐
-   │ レスポンシブ                        │
+/* メディアクエリ */
+/* メディアクエリを900px以下に */
+@media screen and (max-width: 900px) {
+  :root {
+    max-width: 100%;
+    --side_width: 2rem;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ 共通                                │
    └─────────────────────────────────────────┘ */
 
-@media screen and (min-width: 76.8rem) {
-  :root {
-    --space-hor: 4rem; /* 上書き */
-    --space-vrt: 16rem;
+  .under_title,
+  .info_title {
+    font-size: 3.2rem;
+    margin-bottom: 5.2rem;
   }
 
   /* ┌─────────────────────────────────────────┐
@@ -516,6 +529,10 @@ body {
   .hamburger_menu.open ~ .global_menu {
     display: flex;
   }
+  /* ↓ これを追加する */
+  /* .header_area.visible .hamburger_menu {
+  visibility: visible;
+} */
   .header_area.visible .hamburger_menu {
     opacity: 1;
     visibility: visible;
@@ -551,6 +568,7 @@ body {
   /* ┌─────────────────────────────────────────┐
    │ ハンバーガーメニュー押下時のアニメーション                        │
    └─────────────────────────────────────────┘ */
+  /* ハンバーガーメニューがおされたら、「×」にする */
   .hamburger_menu.open .bar:nth-child(1) {
     transform: rotate(45deg);
     top: 1.5rem;
@@ -575,5 +593,301 @@ body {
 
     color: white;
     background-color: black;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ mainvisual(３本の花の画像が表示される)                      │
+   └─────────────────────────────────────────┘ */
+
+  .main_area {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .main_logo_img {
+    width: calc(100% / 3);
+    height: 100vh;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ Information                        │
+   └─────────────────────────────────────────┘ */
+
+  .info_area {
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .info_title {
+    margin-top: 8rem;
+    margin-bottom: 20rem;
+    font-size: 9rem;
+  }
+
+  .info_date {
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ ギャラリが出現したタイミングで表示される右サイドのリンク                        │
+   └─────────────────────────────────────────┘ */
+  .side_area {
+    height: 28rem;
+    width: 4rem;
+    position: fixed;
+    bottom: 10%;
+    right: -10rem; /* 画面外に配置 */
+    background-color: black;
+
+    text-decoration: none;
+    font-size: 1.5rem;
+
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.5s ease-out;
+
+    z-index: 1001; /* ヘッダーと同じレイヤーに配置 */
+  }
+
+  .side_area.open {
+    opacity: 1;
+    right: 0; /* 画面内に移動 */
+  }
+
+  /* ――― 共通のデザイン ――― */
+  .side_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    border: 1px solid white;
+    writing-mode: vertical-rl;
+
+    transform: rotate(180deg);
+    transition: all 0.5s;
+  }
+
+  /* ――― 個別のサイズ設定 ――― */
+  .is_visitor {
+    height: 15rem; /* visitor用の高さ */
+  }
+
+  .is_exhibitor {
+    height: 13rem; /* exhibitor用の高さ */
+  }
+
+  /* ――― ホバー時の共通アクション ――― */
+  .side_link:hover {
+    color: #aaaaaa;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ GALLERY                        │
+   └─────────────────────────────────────────┘ */
+
+  .gallery_area {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 0 var(--side_width);
+    margin-bottom: 40rem;
+  }
+
+  /* 花の画像のコンテナ */
+  .gallery_items {
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery_flower:nth-child(odd) {
+    display: block;
+    margin-left: auto;
+  }
+  .gallery_flower:nth-child(even) {
+    display: block;
+    margin-right: auto;
+  }
+
+  .gallery_format {
+    margin-bottom: 3rem;
+    width: 45%;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ ACCESS　パララックス　前面に文字を通過させる                        │
+   └─────────────────────────────────────────┘ */
+  .access_area {
+    height: 100vh;
+  }
+
+  .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("../img/bg.jpg") center / cover no-repeat;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .bg.visible {
+    opacity: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 10rem 2rem;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+  }
+
+  .access_information {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .access_place {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .access_date {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .access_hour {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+
+  .access_map {
+    display: inline-block;
+    border: 0.2rem solid #fff;
+    padding: 3rem 8rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ CONTACT お問合せ　リンク矢印                      │
+   └─────────────────────────────────────────┘ */
+
+  .contact_area {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 0 var(--side_width);
+    margin-bottom: 40rem;
+    border: 0.5rem solid red;
+  }
+
+  .contact_link {
+    display: block;
+    width: 60rem;
+    padding: 3rem 8rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.4rem;
+    margin: 0 auto 2rem auto;
+    cursor: pointer;
+    border: 0.1rem solid white;
+
+    position: relative;
+  }
+
+  .contact_link:hover::after {
+    transition: 0.3s;
+    right: -6rem; /* ホバーで表示される */
+  }
+
+  .contact_link:hover::before {
+    transition: 0.3s;
+    right: -6rem; /* ホバーで表示される */
+  }
+
+  /* 横線 */
+  .contact_link::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -3rem;
+    width: 20rem; /* 線の長さ */
+    height: 0.1rem;
+    background-color: white;
+    transform: translateY(-50%);
+  }
+
+  /* 矢印の先端（くの字） */
+  .contact_link::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -3rem; /* 横線の右端と同じ値 */
+    width: 0.7rem;
+    height: 0.7rem;
+    border-top: 0.1rem solid white;
+    border-right: 0.1rem solid white;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ フッター                        │
+   └─────────────────────────────────────────┘ */
+  .border {
+    width: 100%;
+    border: 0.01rem solid white;
+    margin-bottom: 10rem;
+  }
+
+  .footer_area {
+    padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer_text {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .text_container {
+    margin-bottom: 5rem;
+  }
+
+  .sns_container {
+    margin-top: 2rem;
+
+    display: flex;
+    justify-content: left;
+
+    gap: 2rem;
+  }
+
+  .policy_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-size: 1.5rem;
   }
 }
